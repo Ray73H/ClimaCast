@@ -12,7 +12,10 @@ export const Home = () => {
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">{sharedCity}</h1>
       <div>
-        <h1 className="head_text text-center">{current?.[temp]}</h1>
+        <h1 className="head_text text-center">
+          {current?.[temp]}&deg;
+          {degrees}
+        </h1>
         <div className="flex-center">
           <img
             src={`https:${current?.condition?.icon}`}
@@ -35,8 +38,14 @@ export const Home = () => {
                   height={80}
                   className="rounded-full"
                 />
-                <h2>High: {forecastDay?.day?.[`max${temp}`]}</h2>
-                <h2>Low: {forecastDay?.day?.[`min${temp}`]}</h2>
+                <h2>
+                  High: {forecastDay?.day?.[`max${temp}`]}&deg;
+                  {degrees}
+                </h2>
+                <h2>
+                  Low: {forecastDay?.day?.[`min${temp}`]}&deg;
+                  {degrees}
+                </h2>
               </div>
             ))}
           </div>

@@ -1,21 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Info from "@app/day/Info";
-import { location } from "@components/location";
+import { useAppContext } from "@components/Location";
 
 const Day = () => {
-  const [city, setCity] = useState("");
-  const newCity = location();
+  const { sharedCity, info, temp, degrees } = useAppContext();
 
-  useEffect(() => {
-    setCity(newCity);
-  }, [newCity]);
+  const forecastDays = info?.forecast?.forecastday;
 
   return (
     <div>
       <h1 className="head_text text-center">7-Day Forecast</h1>
-      <Info city={city} />
+      <h2>{sharedCity}</h2>
+      {forecastDays && (
+        <div>
+          {forecastDays.map((forecastDay, index) => (
+            <div key={index}>
+              <h3>
+                {forecastDay?.date} | High: {forecastDay?.day?.[`max${temp}`]}
+                &deg;
+                {degrees} | Low: {forecastDay?.day?.[`min${temp}`]}&deg;
+                {degrees}
+              </h3>
+              <img
+                src={`http:${forecastDay?.day?.condition?.icon}`}
+                alt="condition"
+                height={80}
+                width={80}
+              />
+              <h3>{forecastDay?.day?.condition?.text}</h3>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Axios from "axios";
 
 const PopOutMenu = () => {
   const [searchText, setSearchText] = useState("");
-  const { setSharedCity, temp, setTemp, degrees, setDegrees } = useAppContext();
+  const { setSharedCity, setTemp, setDegrees } = useAppContext();
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {

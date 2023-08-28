@@ -9,7 +9,7 @@ export function changeForecast(sharedCity, setInfo) {
       try {
         if (sharedCity) {
           const response = await Axios.get(
-            `http://api.weatherapi.com/v1/forecast.json?key=4b29fe7e2c53460cb60235149232108&q=${sharedCity}&days=7`
+            `http://api.weatherapi.com/v1/forecast.json?key=4b29fe7e2c53460cb60235149232108&q=${sharedCity}&days=7&alerts=yes`
           );
           const allInfo = response.data;
           setInfo(allInfo);
