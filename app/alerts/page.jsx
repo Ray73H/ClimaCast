@@ -8,21 +8,34 @@ const Alerts = () => {
   const alerts = info?.alerts?.alert;
 
   return (
-    <div>
-      <h1 className="head_text text-center">Weather Alerts</h1>
-      <h2>
-        {sharedCity}, {info?.forecast?.forecastday?.[0]?.date}
-      </h2>
+    <div className="flex justify-center items-center flex-col">
+      <div className="text-center mb-6 max-w-screen-lg mx-auto">
+        <h1 className="text-3xl font-semibold mb-4">Weather Alerts</h1>
+        <h2 className="text-xl">
+          {sharedCity}, {info?.forecast?.forecastday?.[0]?.date}
+        </h2>
+      </div>
       {alerts && (
-        <div>
+        <div className="max-w-screen-lg mx-auto">
           {alerts.map((alertNum, index) => (
-            <div key={index}>
-              <h3>
-                {alertNum?.event} --- {alertNum?.effective}
+            <div
+              key={index}
+              className="bg-gray-100 p-4 rounded-lg shadow-lg mb-4 text-center"
+            >
+              <h3 className="mb-2 text-lg font-semibold">
+                {alertNum?.event} — {alertNum?.effective}
               </h3>
-              <h3>Description: {alertNum?.desc}</h3>
-              <h3>Instructions: {alertNum?.instruction}</h3>
-              <h3>Areas: {alertNum?.areas}</h3>
+              <p className="mb-2">
+                <span className="font-semibold">Description:</span>{" "}
+                {alertNum?.desc}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Instructions:</span>{" "}
+                {alertNum?.instruction}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Areas:</span> {alertNum?.areas}
+              </p>
             </div>
           ))}
         </div>

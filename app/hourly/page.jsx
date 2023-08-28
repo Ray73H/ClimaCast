@@ -9,13 +9,15 @@ const Hourly = () => {
   const hour = forecast?.hour;
 
   return (
-    <div>
-      <h1 className="head_text text-center">Hourly Forecast</h1>
-      <h2>
-        {sharedCity}, {forecast?.date}
-      </h2>
+    <div className="flex justify-center items-center flex-col">
+      <div className="text-center mb-6">
+        <h1 className="text-3xl font-semibold mb-4">Hourly Forecast</h1>
+        <h2 className="text-xl">
+          {sharedCity}, {forecast?.date}
+        </h2>
+      </div>
       {hour && (
-        <div>
+        <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-6">
           {hour.map((hourData, index) => {
             const parsedTime = new Date(hourData?.time).toLocaleTimeString([], {
               hour: "numeric",
@@ -23,17 +25,23 @@ const Hourly = () => {
             });
 
             return (
-              <div key={index}>
-                <h3>
-                  {parsedTime} | {hourData?.[temp]}&deg;{degrees} |{" "}
+              <div
+                key={index}
+                className="bg-gray-100 p-4 rounded-lg shadow-lg md:mb-0 text-center"
+              >
+                <h3 className="font-semibold mb-1">
+                  {parsedTime} | {hourData?.[temp]}&deg;{degrees}
+                </h3>
+                <div className="flex-center">
                   <img
                     src={`http:${hourData?.condition?.icon}`}
                     alt="condition"
                     height={80}
                     width={80}
-                  />{" "}
-                  {hourData?.condition?.text}
-                </h3>
+                    className="mx-auto"
+                  />
+                </div>
+                <p className="mb-1">{hourData?.condition?.text}</p>
               </div>
             );
           })}

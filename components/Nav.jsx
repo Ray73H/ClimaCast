@@ -7,8 +7,8 @@ import SettingsIcon from "./settings";
 
 const Nav = () => {
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
-      <Link href="/" className="flex gap-2 flex-center">
+    <nav className="flex justify-between items-center w-full mb-16 pt-3 px-6">
+      <Link href="/" className="flex items-center gap-2">
         <Image
           src="/assets/icons/logo.png"
           alt="Weather Logo"
@@ -16,25 +16,40 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">ClimaCast</p>
+        <p className="text-lg font-semibold">ClimaCast</p>
       </Link>
 
       {/* Mobile Navigation */}
-      <div className="sm:flex hidden">
-        <div className="flex gap-3 md:gap-5">
-          <Link href="/today" className="black_btn">
+      <div className="sm:hidden">{/* ... Mobile navigation links */}</div>
+
+      {/* Desktop Navigation */}
+      <div className="hidden sm:block">
+        <div className="flex gap-3 md:gap-5 items-center">
+          <Link
+            href="/today"
+            className="bg-black text-white py-2 px-4 rounded-md"
+          >
             Today
           </Link>
 
-          <Link href="/hourly" className="black_btn">
+          <Link
+            href="/hourly"
+            className="bg-black text-white py-2 px-4 rounded-md"
+          >
             Hourly
           </Link>
 
-          <Link href="/day" className="black_btn">
+          <Link
+            href="/day"
+            className="bg-black text-white py-2 px-4 rounded-md"
+          >
             7-Day
           </Link>
 
-          <Link href="/alerts" className="black_btn">
+          <Link
+            href="/alerts"
+            className="bg-black text-white py-2 px-4 rounded-md"
+          >
             Alerts
           </Link>
 
